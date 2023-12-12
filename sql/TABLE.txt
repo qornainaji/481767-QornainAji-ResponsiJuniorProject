@@ -1,0 +1,12 @@
+create sequence id_dep start 1;
+create sequence id_karyawan start 1;
+create table departemen(
+	id_dep int default nextval('id_dep') not null primary key,
+	nama_dep character varying(30)
+);
+create table karyawan( 
+	id_karyawan int default nextval('id_karyawan') not null primary key,
+	nama character varying(30),
+	id_dep int,
+	foreign key (id_dep) references departemen(id_dep)
+);

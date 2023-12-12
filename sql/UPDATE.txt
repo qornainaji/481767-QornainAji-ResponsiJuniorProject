@@ -1,0 +1,21 @@
+create or replace function st_update_karyawan(
+	_id_karyawan int,
+	_nama character varying,
+	_id_dep int
+)
+returns int as
+'
+begin
+update karyawan SET
+nama = _nama,
+id_dep = _id_dep
+WHERE id_karyawan = _id_karyawan;
+if found then
+return 1;
+else
+return 0;
+end if;
+end
+'
+
+language plpgsql;

@@ -1,0 +1,49 @@
+create function st_insert_dep(
+	_nama_dep character varying (30)
+)
+returns int as
+'
+begin
+insert into public.departemen(
+nama_dep
+)
+values(
+_nama_dep
+);
+if found then
+return 1;
+else
+return 0;
+end if;
+end
+'
+language plpgsql;
+
+select st_insert_dep('HR');
+select * from departemen;
+
+create function st_insert_karyawan(
+	_nama character varying,
+	_id_dep int
+)
+returns int as
+'
+begin
+insert into public.karyawan(
+	nama, id_dep
+)
+values(
+	_nama, _id_dep
+);
+
+if found then
+return 1;
+else
+return 0;
+end if;
+end
+'
+language plpgsql;
+
+select st_insert_karyawan('Rasha', 1);
+select * from karyawan;

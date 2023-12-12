@@ -1,0 +1,17 @@
+create or replace function st_select()
+returns table (id_dep int, nama_dep character varying,
+			  id_karyawan int, nama character varying)
+language plpgsql
+as
+'
+begin
+return query
+select departemen.id_dep,
+departemen.nama_dep,
+karyawan.id_karyawan,
+karyawan.nama
+from karyawan inner join departemen on
+karyawan.id_dep = departemen.id_dep;
+end
+'
+select * from st_select();

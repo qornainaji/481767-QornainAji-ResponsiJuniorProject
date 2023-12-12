@@ -1,0 +1,15 @@
+create or replace function st_delete(_id_karyawan int)
+returns int as
+'
+begin
+delete from public.karyawan
+where id_karyawan = _id_karyawan;
+if found then
+return 1;
+else
+return 0;
+end if;
+end
+'
+
+language plpgsql;
